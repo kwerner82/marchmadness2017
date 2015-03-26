@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     var players = [
         ["DW  ", "KW  ", "SB  ", "EL  ", "AK  ", "NM  ", "NC  ", "OG  ", "MCOS", "MCOS"],
-        ["GB  ", "JW  ", "KW  ", "MS  ", "MCOS", "AA  ", "Mick", "GS  ", "RJ  ", "EL  "],
+        ["GB  ", "JW  ", "KW  ", "MCOS", "MCOS", "AA  ", "Mick", "GS  ", "RJ  ", "EL  "],
         ["NC  ", "EL  ", "OG  ", "KW  ", "MCOS", "SA  ", "CW  ", "RJ  ", "Mick", "GG  "],
         ["EL  ", "AS  ", "AA  ", "RJ  ", "KW  ", "MCOS", "RJ  ", "RJ  ", "AM  ", "MO  "],
         ["MO  ", "NW  ", "LM  ", "JF  ", "MCOS", "KW  ", "MCOS", "EL  ", "MO  ", "NC  "],
