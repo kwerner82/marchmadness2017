@@ -2,15 +2,45 @@ $(document).ready(function() {
     var winningTeamNumbers = [1, 9, 4, 0, 2, 5, 7, 8, 6, 3];
     var losingTeamNumbers = [3, 9, 2, 0, 5, 6, 1, 4, 7, 8];
 
-    renderSquares(winningTeamNumbers, losingTeamNumbers);
+    var payoutsPerRound = {};
+    payoutsPerRound[1] = 5;
+    payoutsPerRound[2] = 10;
+    payoutsPerRound[3] = 20;
+    payoutsPerRound[4] = 40;
+    payoutsPerRound[5] = 80;
+    payoutsPerRound[6] = 200;
+
+    var players = [
+        ["DW  ", "KW  ", "SB  ", "EL  ", "AK  ", "NM  ", "NC  ", "OG  ", "MCOS", "MCOS"],
+        ["GB  ", "JW  ", "KW  ", "MS  ", "MCOS", "AA  ", "Mick", "GS  ", "RJ  ", "EL  "],
+        ["NC  ", "EL  ", "OG  ", "KW  ", "MCOS", "SA  ", "CW  ", "RJ  ", "Mick", "GG  "],
+        ["EL  ", "AS  ", "AA  ", "RJ  ", "KW  ", "MCOS", "RJ  ", "RJ  ", "AM  ", "MO  "],
+        ["MO  ", "NW  ", "LM  ", "JF  ", "MCOS", "KW  ", "MCOS", "EL  ", "MO  ", "NC  "],
+        ["RG  ", "MO  ", "RJ  ", "JB  ", "RJ  ", "RJ  ", "KW  ", "MO  ", "EL  ", "AK  "],
+        ["SW  ", "OG  ", "MO  ", "RJ  ", "DW  ", "EL  ", "MO  ", "KW  ", "RG  ", "Mick"],
+        ["Mick", "NC  ", "CW  ", "MO  ", "EL  ", "MO  ", "RG  ", "JF  ", "KW  ", "KB  "],
+        ["KW  ", "RJ  ", "EL  ", "MCOS", "MO  ", "NW  ", "MCOS", "NC  ", "SB  ", "SA  "],
+        ["MCOS", "JF  ", "KW  ", "RG  ", "DW  ", "AS  ", "EL  ", "Mick", "GG  ", "OG  "]
+    ];
+
+    var playersBySquareId = {};
+    $.each(winningTeamNumbers, function(winningIndex, winningNumber) { 
+        $.each(losingTeamNumbers, function(losingIndex, losingNumber) {
+            playersBySquareId["square" + winningNumber + losingNumber] = $.trim(players[losingIndex][winningIndex]);
+        });
+    });
+
+    renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId);
 
     getGames().then(function(games) {
-        renderWinnings(winningTeamNumbers, losingTeamNumbers, games);
+        var winningsBySquareId = getWinningsBySquareId(winningTeamNumbers, losingTeamNumbers, payoutsPerRound, games);
+        renderWinnings(winningsBySquareId);
+        renderWinningsPerPlayer(playersBySquareId, winningsBySquareId);
         renderGames(games);
     });
 });
 
-function renderSquares(winningTeamNumbers, losingTeamNumbers) {
+function renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId) {
     var squares = $(".squares");
  
     var headerRow = $("<tr></tr>");
@@ -28,24 +58,75 @@ function renderSquares(winningTeamNumbers, losingTeamNumbers) {
         squares.append(row);
 
         for(var i = 0; i < 10; i++) {
-            row.append("<td id='square" + winningTeamNumbers[i] + number + "'></td>");            
+            var squareId = "square" + winningTeamNumbers[i] + number;
+
+            var td = $("<td id='" + squareId + "'></td>");
+            td.append("<div class='player'>" + playersBySquareId[squareId] + "</div>");
+            td.append("<div class='winnings'></div>");
+
+            row.append(td);
         }
     });
 }
 
-function renderWinnings(winningTeamNumbers, losingTeamNumbers, games) {
-    var payouts = {};
-    payouts[1] = 5;
-    payouts[2] = 10;
-    payouts[3] = 20;
-    payouts[4] = 40;
-    payouts[5] = 80;
-    payouts[6] = 200;
+function renderWinnings(winningsBySquareId) {
+    $.each(winningsBySquareId, function(key, winnings) {
+        var square = $("#" + key);
 
-    var totalWinningsPerSquare = {};
+        if (winnings) {
+            square.addClass("winner");
+            square.find(".winnings").text("$" + winnings);
+        } else {
+            square.find(".winnings").text("-");
+        }
+    });
+}
+
+function renderWinningsPerPlayer(playersBySquareId, winningsBySquareId) {
+    var winningsPerPlayer = {};
+
+    $.each(playersBySquareId, function(squareId, player) {
+        winningsPerPlayer[player] = winningsPerPlayer[player] || 0;
+        winningsPerPlayer[player] += winningsBySquareId[squareId];
+    });
+
+    var tableEntries = [];
+    $.each(winningsPerPlayer, function(player, totalWinnings) {
+        tableEntries.push({ player: player, winnings: totalWinnings });
+    });
+
+    tableEntries.sort(function(entry1, entry2) { 
+        if (entry1.winnings < entry2.winnings) {
+            return -1;
+        }
+
+        if (entry1.winnings > entry2.winnings) {
+            return 1;
+        }
+
+        return 0;
+    });
+
+    tableEntries.reverse();
+
+    var table = $(".winningsPerPlayer");
+    $.each(tableEntries, function(index, entry) {
+        var row = $("<tr></tr>");
+        row.append("<td>" + entry.player + "</td>");
+        row.append("<td> $" + entry.winnings + "</td>");
+        table.find("tbody").append(row);
+    });
+}
+
+function renderGames(games) {
+    $(".games").text(JSON.stringify(games, undefined, 2));
+}
+
+function getWinningsBySquareId(winningTeamNumbers, losingTeamNumbers, payoutsPerRound, games) {
+    var winningsBySquareId = {};
     $.each(winningTeamNumbers, function(index, winningNumber) {
         $.each(losingTeamNumbers, function(index, losingNumber) {
-            totalWinningsPerSquare["square" + winningNumber + losingNumber] = 0;
+            winningsBySquareId["square" + winningNumber + losingNumber] = 0;
         });
     });
 
@@ -60,24 +141,11 @@ function renderWinnings(winningTeamNumbers, losingTeamNumbers, games) {
             losingNumber = game.score1 % 10; 
         }
 
-        var payout = payouts[game.round] || 0;
-        totalWinningsPerSquare["square" + winningNumber + losingNumber] += payout;
+        var payout = payoutsPerRound[game.round] || 0;
+        winningsBySquareId["square" + winningNumber + losingNumber] += payout;
     });
 
-    $.each(totalWinningsPerSquare, function(key, winnings) {
-        var square = $("#" + key);
-
-        if (winnings) {
-            square.addClass("winner");
-            square.text("$" + winnings);
-        } else {
-            square.text("-");
-        }
-    });
-}
-
-function renderGames(games) {
-    $(".games").text(JSON.stringify(games, undefined, 2));
+    return winningsBySquareId;
 }
 
 function getGames() {

@@ -2,21 +2,32 @@ body {
 	padding: 20px;
 }
 
+section {
+	margin-top: 30px;
+}
+
 table.squares {
 	font-size: 32px;
 	text-align: center;
 	vertical-align: middle;
-	margin-bottom: 50px;
 }
-
 
 table.squares td {
 	width: 100px;
 	height: 100px;
 	border: 1px solid black;
+	position: relative;
 }
 
-table.squares td.winner {
+table.squares td .player {
+	position: absolute;
+	top: 5;
+	left: 5;
+	right: 5;
+	font-size: 14px;
+}
+
+table.squares td.winner .winnings {
 	color: green;
 }
 
