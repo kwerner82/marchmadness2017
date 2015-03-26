@@ -1,0 +1,27 @@
+body {
+	padding: 20px;
+}
+
+table.squares {
+	font-size: 32px;
+	text-align: center;
+	vertical-align: middle;
+	margin-bottom: 50px;
+}
+
+
+table.squares td {
+	width: 100px;
+	height: 100px;
+	border: 1px solid black;
+}
+
+table.squares td.winner {
+	color: green;
+}
+
+table.squares td.header {
+	background-color: lightgrey;
+	font-weight: bold;
+}
+
