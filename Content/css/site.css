@@ -36,3 +36,11 @@ table.squares td.header {
 	font-weight: bold;
 }
 
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
