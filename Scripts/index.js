@@ -13,16 +13,16 @@ $(document).ready(function() {
     payoutsPerRound[6] = 200;
 
     var players = [
-        ["KW  ", "RG  ", "DWE ", "CR  ", "SW  ", "AK  ", "    ", "MV  ", "NC  ", "    "],
+        ["KW  ", "RG  ", "DWE ", "CR  ", "SW  ", "AK  ", "RJ  ", "MV  ", "NC  ", "    "],
         ["MS  ", "KW  ", "OG  ", "    ", "DWE ", "CW  ", "AK  ", "SW  ", "MV  ", "NC  "],
         ["EL  ", "OG  ", "KW  ", "RG  ", "CW  ", "CP  ", "    ", "AK  ", "    ", "GS  "],
-        ["OG  ", "EL  ", "CR  ", "KW  ", "    ", "    ", "    ", "    ", "    ", "    "],
-        ["    ", "NW  ", "LM  ", "JF  ", "MCOS", "    ", "MCOS", "EL  ", "MO  ", "NC  "],
-        ["    ", "MO  ", "RJ  ", "JB  ", "RJ  ", "RJ  ", "    ", "MO  ", "EL  ", "AK  "],
-        ["    ", "OG  ", "MO  ", "RJ  ", "DWE ", "EL  ", "MO  ", "    ", "RG  ", "Mick"],
-        ["    ", "NC  ", "CW  ", "MO  ", "EL  ", "MO  ", "RG  ", "JF  ", "    ", "KB  "],
-        ["    ", "RJ  ", "EL  ", "MCOS", "MO  ", "NW  ", "MCOS", "NC  ", "SB  ", "SA  "],
-        ["    ", "JF  ", "KW  ", "RG  ", "DWA ", "AS  ", "EL  ", "Mick", "GG  ", "OG  "]
+        ["OG  ", "EL  ", "CR  ", "KW  ", "RG  ", "    ", "MG  ", "JF  ", "AK  ", "RJ  "],
+        ["PK  ", "CR  ", "EL  ", "MS  ", "KW  ", "RG  ", "NW  ", "JF  ", "JF  ", "AK  "],
+        ["CR  ", "GS  ", "MO  ", "EL  ", "    ", "PK  ", "RG  ", "NW  ", "CP  ", "MG  "],
+        ["RJ  ", "MO  ", "MS  ", "MV  ", "JB  ", "NC  ", "PK  ", "MG  ", "    ", "CP  "],
+        ["MO  ", "RJ  ", "    ", "SW  ", "EL  ", "JB  ", "NC  ", "PK  ", "MS  ", "    "],
+        ["    ", "MV  ", "SW  ", "    ", "AG  ", "MS  ", "JB  ", "NC  ", "PK  ", "MO  "],
+        ["NW  ", "SW  ", "RJ  ", "AG  ", "MV  ", "    ", "CR  ", "    ", "MO  ", "    "]
     ];
 
     var playersBySquareId = {};
