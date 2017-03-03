@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() { 
     var winningTeamNumbers = [1, 9, 4, 0, 2, 5, 7, 8, 6, 3];
     var losingTeamNumbers = [3, 9, 2, 0, 5, 6, 1, 4, 7, 8];
 
