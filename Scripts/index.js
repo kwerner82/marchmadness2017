@@ -18,10 +18,10 @@ $(document).ready(function() {
         ["EL  ", "OG  ", "KW  ", "RG  ", "CW  ", "CP  ", "MGU ", "AK  ", "SB  ", "GS  "],
         ["OG  ", "EL  ", "CR  ", "KW  ", "RG  ", "    ", "MGI ", "JF  ", "AK  ", "RJ  "],
         ["PK  ", "CR  ", "EL  ", "MS  ", "KW  ", "RG  ", "NW  ", "JF  ", "JF  ", "AK  "],
-        ["CR  ", "GS  ", "MO  ", "EL  ", "    ", "PK  ", "RG  ", "NW  ", "CP  ", "MGI "],
+        ["CR  ", "GS  ", "MO  ", "EL  ", "EG  ", "PK  ", "RG  ", "NW  ", "CP  ", "MGI "],
         ["RJ  ", "MO  ", "MS  ", "MV  ", "JB  ", "NC  ", "PK  ", "MGI ", "MGU ", "CP  "],
-        ["MO  ", "RJ  ", "    ", "SW  ", "EL  ", "JB  ", "NC  ", "PK  ", "MS  ", "MGU "],
-        ["    ", "MV  ", "SW  ", "GB  ", "AG  ", "MS  ", "JB  ", "NC  ", "PK  ", "MO  "],
+        ["MO  ", "RJ  ", "EG  ", "SW  ", "EL  ", "JB  ", "NC  ", "PK  ", "MS  ", "MGU "],
+        ["EG  ", "MV  ", "SW  ", "GB  ", "AG  ", "MS  ", "JB  ", "NC  ", "PK  ", "MO  "],
         ["NW  ", "SW  ", "RJ  ", "AG  ", "MV  ", "GB  ", "CR  ", "MGU ", "MO  ", "SB  "]
     ];
 
