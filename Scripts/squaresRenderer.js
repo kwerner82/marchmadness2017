@@ -39,12 +39,14 @@
         $("table.squares tr td.highlight").removeClass("highlight");
         $("table.winningsPerPlayer tr.highlight").removeClass("highlight");
         $("table.profitPerPlayer tr.highlight").removeClass("highlight");
+        $("table.games tr.highlight").removeClass("highlight");
 
         if (window.selectedUser !== playerId)
         {
             $("table.squares tr td[playerId='" + playerId + "']").addClass("highlight");
             $("table.winningsPerPlayer tr[playerId='" + playerId + "']").addClass("highlight");
             $("table.profitPerPlayer tr[playerId='" + playerId + "']").addClass("highlight");
+            $("table.games tr[playerId='" + playerId + "']").addClass("highlight");
             window.selectedUser = playerId;
         }
         else
@@ -175,8 +177,53 @@
     }
     window.renderProfitPerPlayer = renderProfitPerPlayer;
 
-    function renderGames(games) {
-        $(".games").text(JSON.stringify(games, undefined, 2));
+    function renderGames(games, players, payoutsPerRound, winningTeamNumbers, losingTeamNumbers) {
+        var playersBySquareId = {};
+        $.each(winningTeamNumbers, function(winningIndex, winningNumber) {
+            $.each(losingTeamNumbers, function(losingIndex, losingNumber) {
+                playersBySquareId["square" + winningNumber + losingNumber] = $.trim(players[losingIndex][winningIndex]);
+            });
+        });
+
+
+        var table = $(".games");
+        $.each(games, function(index, game) {
+            var gameScoreColumn = "";
+            var winningNumber = -1;
+            var losingNumber = -1;
+            if (game.score1 > game.score2)
+            {
+                gameScoreColumn = "<td><b>" + game.team1 + ": " + game.score1 + "</b></br>" + game.team2 + ": " + game.score2 + "</td>";
+                winningNumber = game.score1 % 10;
+                losingNumber = game.score2 % 10;
+            }
+            else
+            {
+                gameScoreColumn = "<td>" + game.team1 + ": " + game.score1 + "</br><b>" + game.team2 + ": " + game.score2 + "</b></td>";
+                winningNumber = game.score2 % 10;
+                losingNumber = game.score1 % 10;
+            }
+
+            var playerId = playersBySquareId["square" + winningNumber + losingNumber];
+
+            var row = $("<tr playerId='" + playerId + "'></tr>");
+            row.append("<td>" + game.round + "</td>");
+            row.append(gameScoreColumn);
+            row.append("<td>" + playerId + " ($" + payoutsPerRound[game.round] + ")" + "</td>");
+
+            table.find("tbody").append(row);
+
+            row.click(function() {
+                selectPlayer(this.attributes.playerId.nodeValue);
+            });
+        });
+
+        if (games.length <= 0)
+        {
+            var row = $("<tr></tr>");
+            row.append("<td>No games have finished yet!</td><td></td><td></td>");
+            table.find("tbody").append(row);
+        }
     }
     window.renderGames = renderGames;
 

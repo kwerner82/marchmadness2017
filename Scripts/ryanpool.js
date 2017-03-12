@@ -39,6 +39,6 @@ $(document).ready(function() {
         renderWinnings(winningsBySquareId);
         renderWinningsPerPlayer(playersBySquareId, winningsBySquareId);
         renderProfitPerPlayer(playersBySquareId, winningsBySquareId, costPerSquare);
-        renderGames(games);
+        renderGames(games, players, payoutsPerRound, winningTeamNumbers, losingTeamNumbers);
     });
 });

@@ -46,7 +46,8 @@ table.squares td.header {
 
 table.squares tbody tr td:hover,
 table.winningsPerPlayer tr:hover,
-table.profitPerPlayer tr:hover {
+table.profitPerPlayer tr:hover,
+table.games tr:hover {
     background-color: #CCCCCC !important;
 	cursor: pointer;
 }
