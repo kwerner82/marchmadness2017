@@ -20,7 +20,7 @@ $(document).ready(function() {
         ["BA  ", "BW  ", "LG  ", "JR  ", "OG  ", "NT  ", "LO  ", "NU  ", "CD  ", "JM  "],
         ["AGU ", "BM  ", "SC  ", "MF  ", "BA  ", "KW  ", "ZL  ", "NK  ", "WA  ", "BP  "],
         ["LG  ", "SO  ", "DP  ", "AGE ", "NK  ", "WO  ", "KG  ", "WA  ", "BA  ", "EP  "],
-        ["AP. ", "EP. ", "BP  ", "SC  ", "KH  ", "LG  ", "MF  ", "BW  ", "WO  ", "ZL  "],
+        ["AP  ", "EP. ", "BP  ", "SC  ", "KH  ", "LG  ", "MF  ", "BW  ", "WO  ", "ZL  "],
         ["CDF ", "JY  ", "MO  ", "EE  ", "BG  ", "JL  ", "EE  ", "TD  ", "AGE ", "MA  "],
         ["NK  ", "ZL  ", "LO  ", "LG  ", "MF  ", "JM  ", "JL  ", "SO  ", "NK  ", "JR  "]
     ];
