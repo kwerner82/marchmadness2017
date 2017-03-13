@@ -18,7 +18,7 @@ $(document).ready(function() {
         ["KH  ", "KS  ", "KW  ", "MA  ", "SC  ", "AP  ", "BG  ", "NT  ", "MF  ", "BM  "],
         ["MO  ", "SC  ", "KH  ", "KW  ", "NU  ", "KG  ", "JL  ", "KS  ", "NK  ", "KG  "],
         ["BA  ", "BW  ", "LG  ", "JR  ", "OG  ", "NT  ", "LO  ", "NU  ", "CD  ", "JM  "],
-        ["AGU ", "BM  ", "SC  ", "MF  ", "BA  ", "KW  ", "ZL  ", "NK  ", "    ", "BP  "],
+        ["AGU ", "BM  ", "SC  ", "MF  ", "BA  ", "KW  ", "ZL  ", "NK  ", "WA  ", "BP  "],
         ["LG  ", "SO  ", "DP  ", "AGE ", "NK  ", "WO  ", "KG  ", "WA. ", "BA  ", "EP  "],
         ["AP. ", "EP. ", "BP  ", "SC  ", "KH  ", "LG  ", "MF  ", "BW  ", "WO  ", "ZL  "],
         ["CDF ", "JY  ", "MO  ", "EE  ", "BG  ", "JL  ", "EE  ", "TD  ", "AGE ", "MA  "],
