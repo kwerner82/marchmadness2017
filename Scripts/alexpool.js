@@ -14,15 +14,15 @@ $(document).ready(function() {
 
     var players = [
         ["KW  ", "AGE ", "JL  ", "KG  ", "MO  ", "EE  ", "AGU ", "    ", "    ", "JY  "],
-        ["TD  ", "KW  ", "MA  ", "BM  ", "    ", "BP  ", "JL  ", "OG  ", "SO  ", "    "],
-        ["KH  ", "KS  ", "KW  ", "MA  ", "SC  ", "    ", "BG  ", "NT  ", "    ", "BM  "],
+        ["TD  ", "KW  ", "MA  ", "BM  ", "ZL  ", "BP  ", "JL  ", "OG  ", "SO  ", "    "],
+        ["KH  ", "KS  ", "KW  ", "MA  ", "SC  ", "AP  ", "BG  ", "NT  ", "    ", "BM  "],
         ["MO  ", "SC  ", "KH  ", "KW  ", "NU  ", "KG  ", "JL  ", "KS  ", "NK  ", "KG  "],
         ["BA  ", "BW  ", "LG  ", "JR  ", "OG  ", "NT  ", "LO  ", "NU  ", "CD  ", "JM  "],
-        ["AGU ", "BM  ", "SC  ", "MF  ", "BA  ", "KW  ", "    ", "NK  ", "    ", "BP  "],
-        ["LG  ", "SO  ", "    ", "AGE ", "NK  ", "    ", "KG  ", "    ", "BA  ", "    "],
-        ["    ", "    ", "BP  ", "SC  ", "KH  ", "LG  ", "    ", "BW  ", "    ", "    "],
+        ["AGU ", "BM  ", "SC  ", "MF  ", "BA  ", "KW  ", "ZL  ", "NK  ", "    ", "BP  "],
+        ["LG  ", "SO  ", "DP  ", "AGE ", "NK  ", "WO  ", "KG  ", "    ", "BA  ", "    "],
+        ["AP. ", "EP. ", "BP  ", "SC  ", "KH  ", "LG  ", "MF  ", "BW  ", "    ", "    "],
         ["CDF ", "JY  ", "MO  ", "EE  ", "BG  ", "JL  ", "EE  ", "TD  ", "AGE ", "MA  "],
-        ["NK  ", "    ", "LO  ", "LG  ", "MF  ", "JM  ", "JL  ", "SO  ", "NK  ", "JR  "]
+        ["NK  ", "ZL  ", "LO  ", "LG  ", "MF  ", "JM  ", "JL  ", "SO  ", "NK  ", "JR  "]
     ];
 
     var playersBySquareId = {};
