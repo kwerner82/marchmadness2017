@@ -205,6 +205,11 @@
             }
 
             var playerId = playersBySquareId["square" + winningNumber + losingNumber];
+            
+            if (game.round === 0)
+            {
+                playerId = "N/A";   
+            }
 
             var row = $("<tr playerId='" + playerId + "'></tr>");
             row.append("<td>" + game.round + "</td>");
