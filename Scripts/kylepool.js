@@ -25,22 +25,7 @@ $(document).ready(function() {
         ["EG  ", "MV  ", "SW  ", "GB  ", "AG  ", "MS  ", "JB  ", "NC  ", "PK  ", "MO  "],
         ["NW  ", "SW  ", "RJ  ", "AG  ", "MV  ", "GB  ", "CR  ", "MGU ", "MO  ", "SB  "]
     ];
-
-    var playersBySquareId = {};
-    $.each(winningTeamNumbers, function(winningIndex, winningNumber) {
-        $.each(losingTeamNumbers, function(losingIndex, losingNumber) {
-            playersBySquareId["square" + winningNumber + losingNumber] = $.trim(players[losingIndex][winningIndex]);
-        });
-    });
-
-    renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId);
-
-    getGames().then(function(games) {
-        var winningsBySquareId = getWinningsBySquareId(winningTeamNumbers, losingTeamNumbers, payoutsPerRound, games);
-        renderWinnings(winningsBySquareId);
-        renderWinningsPerPlayer(playersBySquareId, winningsBySquareId);
-        renderProfitPerPlayer(playersBySquareId, winningsBySquareId, costPerSquare);
-        renderGames(games, players, payoutsPerRound, winningTeamNumbers, losingTeamNumbers);
-    });
+    
+    initializeSquares(winningTeamNumbers, losingTeamNumbers, players, costPerSquare, payoutsPerRound);
 });
 
