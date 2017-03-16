@@ -99,7 +99,8 @@
         });
 
         tableEntries.reverse();
-
+        
+        $(".winningsPerPlayer tbody tr").remove();
         var table = $(".winningsPerPlayer");
         $.each(tableEntries, function(index, entry) {
             var row = $("<tr playerId='" + entry.player + "'></tr>");
@@ -152,6 +153,8 @@
 
         tableEntries.reverse();
 
+        $(".profitPerPlayer tbody tr").remove();
+        
         var table = $(".profitPerPlayer");
         $.each(tableEntries, function(index, entry) {
             var row = $("<tr playerId='" + entry.player + "'></tr>");
@@ -185,7 +188,8 @@
             });
         });
 
-
+        $(".games tr").remove();
+        
         var table = $(".games");
         $.each(games, function(index, game) {
             var gameScoreColumn = "";
@@ -344,7 +348,7 @@
         
         renderData();
         
-        // setInterval(renderData, 30000);
+        setInterval(renderData, 30000);
     }
     window.initializeSquares = initializeSquares;
 })();
