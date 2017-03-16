@@ -344,7 +344,7 @@
         
         renderData();
         
-        setInterval(renderData, 30000);
+        // setInterval(renderData, 30000);
     }
     window.initializeSquares = initializeSquares;
 })();
