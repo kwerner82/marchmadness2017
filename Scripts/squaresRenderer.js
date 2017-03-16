@@ -322,7 +322,7 @@
     }
     window.getGames = getGames;
     
-    function initializeSquares() {
+    function initializeSquares(winningTeamNumbers, losingTeamNumbers, players, costPerSquare, payoutsPerRound) {
         var playersBySquareId = {};
         $.each(winningTeamNumbers, function(winningIndex, winningNumber) {
             $.each(losingTeamNumbers, function(losingIndex, losingNumber) {
