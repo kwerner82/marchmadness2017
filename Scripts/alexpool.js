@@ -5,6 +5,7 @@ $(document).ready(function() {
     var costPerSquare = 10;
 
     var payoutsPerRound = {};
+    payoutsPerRound[0] = 0;
     payoutsPerRound[1] = 5;
     payoutsPerRound[2] = 10;
     payoutsPerRound[3] = 20;
