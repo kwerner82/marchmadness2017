@@ -332,13 +332,19 @@
 
         renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId);
 
-        getGames().then(function(games) {
-            var winningsBySquareId = getWinningsBySquareId(winningTeamNumbers, losingTeamNumbers, payoutsPerRound, games);
-            renderWinnings(winningsBySquareId);
-            renderWinningsPerPlayer(playersBySquareId, winningsBySquareId);
-            renderProfitPerPlayer(playersBySquareId, winningsBySquareId, costPerSquare);
-            renderGames(games, players, payoutsPerRound, winningTeamNumbers, losingTeamNumbers);
-        });
+        var renderData = function() {
+            getGames().then(function(games) {
+                var winningsBySquareId = getWinningsBySquareId(winningTeamNumbers, losingTeamNumbers, payoutsPerRound, games);
+                renderWinnings(winningsBySquareId);
+                renderWinningsPerPlayer(playersBySquareId, winningsBySquareId);
+                renderProfitPerPlayer(playersBySquareId, winningsBySquareId, costPerSquare);
+                renderGames(games, players, payoutsPerRound, winningTeamNumbers, losingTeamNumbers);
+            });   
+        };
+        
+        renderData();
+        
+        setInterval(renderData, 30000);
     }
     window.initializeSquares = initializeSquares;
 })();
