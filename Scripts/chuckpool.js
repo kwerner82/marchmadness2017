@@ -1,6 +1,6 @@
 $(document).ready(function() { 
-    var winningTeamNumbers = [8, 2, 9, 3, 4, 1, 6, 7, 0, 5];
-    var losingTeamNumbers = [9, 8, 5, 3, 2, 6, 0, 4, 7, 1];
+    var winningTeamNumbers = [1, 5, 8, 6, 3, 4, 9, 2, 7, 0];
+    var losingTeamNumbers = [4, 3, 5, 2, 7, 0, 8, 6, 9, 1];
 
     var costPerSquare = 10;
 
