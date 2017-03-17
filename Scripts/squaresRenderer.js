@@ -311,11 +311,11 @@
 
             completedGames.sort(function(game1, game2) {
                 if (game1.round < game2.round) {
-                    return -1;
+                    return 1;
                 }
 
                 if (game1.round > game2.round) {
-                    return 1;
+                    return -1;
                 }
 
                 return 0;
