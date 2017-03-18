@@ -20,9 +20,19 @@
 
             for(var i = 0; i < 10; i++) {
                 var squareId = "square" + winningTeamNumbers[i] + number;
+                var playerId = playersBySquareId[squareId];
 
-                var td = $("<td id='" + squareId + "' playerId='" + playersBySquareId[squareId] + "'></td>");
-                td.append("<div class='player'>" + playersBySquareId[squareId] + "</div>");
+                var td = $("<td></td>");
+                td.attr("id", squareId);
+                td.attr("playerId", playerId);
+                td.addClass("highlight-on-hover");
+
+                if (playerId === window.selectedUser)
+                {
+                    td.addClass("highlight");
+                }
+
+                td.append("<div class='player'>" + playerId + "</div>");
                 td.append("<div class='winnings'></div>");
 
                 row.append(td);
@@ -103,7 +113,15 @@
         $(".winningsPerPlayer tbody tr").remove();
         var table = $(".winningsPerPlayer");
         $.each(tableEntries, function(index, entry) {
-            var row = $("<tr playerId='" + entry.player + "'></tr>");
+            var row = $("<tr></tr>");
+            row.attr("playerId", entry.player);
+            row.addClass("highlight-on-hover");
+
+            if (entry.player === window.selectedUser)
+            {
+                row.addClass("highlight");
+            }
+
             row.append("<td>" + entry.player + "</td>");
             row.append("<td> $" + entry.winnings + "</td>");
             table.find("tbody").append(row);
@@ -157,7 +175,15 @@
         
         var table = $(".profitPerPlayer");
         $.each(tableEntries, function(index, entry) {
-            var row = $("<tr playerId='" + entry.player + "'></tr>");
+            var row = $("<tr></tr>");
+            row.attr("playerId", entry.player);
+            row.addClass("highlight-on-hover");
+
+            if (entry.player === window.selectedUser)
+            {
+                row.addClass("highlight");
+            }
+
             row.append("<td>" + entry.player + "</td>");
 
             if (entry.profit > 0) {
@@ -210,21 +236,35 @@
 
             var playerId = playersBySquareId["square" + winningNumber + losingNumber];
             
+            var row = $("<tr></tr>");
             if (game.round === 0)
             {
                 playerId = "N/A";   
             }
+            else
+            {
+                row.addClass("highlight-on-hover");
+            }
 
-            var row = $("<tr playerId='" + playerId + "'></tr>");
+            row.attr("playerId", playerId);
+
+            if (playerId === window.selectedUser)
+            {
+                row.addClass("highlight");
+            }
+
             row.append("<td>" + game.round + "</td>");
             row.append(gameScoreColumn);
             row.append("<td>" + playerId + " ($" + payoutsPerRound[game.round] + ")" + "</td>");
 
             table.find("tbody").append(row);
 
-            row.click(function() {
-                selectPlayer(this.attributes.playerId.nodeValue);
-            });
+            if (game.round !== 0)
+            {
+                row.click(function() {
+                    selectPlayer(this.attributes.playerId.nodeValue);
+                });
+            }
         });
 
         if (games.length <= 0)
