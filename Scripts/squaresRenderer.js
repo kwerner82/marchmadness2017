@@ -46,12 +46,19 @@
                 td.append("<div class='winnings'></div>");
 
                 row.append(td);
-
-                td.click(function() {
-                    selectPlayer(this.attributes.playerId.nodeValue);
-                });
             }
         });
+
+        squares
+            .on("click", "td", function(evt) {
+                selectPlayer($(this).attr("playerId"));
+            })
+            .on("mouseleave", "td", function(evt) {
+                unhover();
+            })
+            .on("mouseenter", "td", function(evt) {
+                hoverPlayer($(this).attr("playerId"));
+            });
     }
     window.renderSquares = renderSquares;
 
@@ -75,6 +82,22 @@
         }
     }
     window.selectPlayer = selectPlayer;
+
+    function unhover() {
+        $("table.squares tr td.hover").removeClass("hover");
+        $("table.winningsPerPlayer tr.hover").removeClass("hover");
+        $("table.profitPerPlayer tr.hover").removeClass("hover");
+        $("table.games tr.hover").removeClass("hover");
+    }
+    window.unhover = unhover;
+
+    function hoverPlayer(playerId) {
+        $("table.squares tr td[playerId='" + playerId + "']").addClass("hover");
+        $("table.winningsPerPlayer tr[playerId='" + playerId + "']").addClass("hover");
+        $("table.profitPerPlayer tr[playerId='" + playerId + "']").addClass("hover");
+        $("table.games tr[playerId='" + playerId + "']").addClass("hover");
+    }
+    window.hoverPlayer = hoverPlayer;
 
     function renderWinnings(winningsBySquareId) {
         $.each(winningsBySquareId, function(key, winnings) {
