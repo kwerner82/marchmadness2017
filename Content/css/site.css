@@ -58,10 +58,10 @@ table.squares td.header {
 }
 
 .highlight-on-hover:hover {
-	background-color: #CCCCCC !important;
+	background-color: #EEEEEE;
 	cursor: pointer;
 }
 
 .highlight {
-    background-color: #CCCCCC !important;
+    background-color: lightgreen !important;
 }
