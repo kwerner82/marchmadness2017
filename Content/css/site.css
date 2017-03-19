@@ -7,7 +7,7 @@ section {
 }
 
 table.squares {
-	font-size: 32px;
+	font-size: 24px;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -25,6 +25,10 @@ table.squares td .player {
 	left: 5;
 	right: 5;
 	font-size: 14px;
+}
+
+table.squares .winnings {
+	padding-top: 20px;
 }
 
 table.squares td.winner .winnings {
