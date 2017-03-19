@@ -395,14 +395,6 @@
             });
         });
 
-        var normalizedPlayersBySquareId = {};
-        $.each(playersBySquareId, function(squareId, player) {
-            // Strip whitespace and number from player
-            // For example, this maps "Ryan 1", "Ryan 2", "Ryan 3" all to "Ryan".
-            // This is useful for folks who want to identify multiple squares with distinct display names.
-            normalizedPlayersBySquareId[squareId] = player.replace(/\s*\d*$/, "");
-        });
-
         renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId);
 
         var renderData = function() {
