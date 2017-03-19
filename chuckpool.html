@@ -15,54 +15,63 @@
   	<body>
 		<h1>Chuck's NCAA March Madness 2017 Squares</h1>
 
-  		<section>
-  			<h3>Total Winnings Per Square</h3>
-  			<table class="squares"></table>
-  		</section>
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><a href="#squares">Squares</a></li>
+			<li role="presentation"><a href="#games">Games</a></li>
+			<li role="presentation"><a href="#winnings">Winnings</a></li>
+			<li role="presentation"><a href="#profit">Profit</a></li>
+		</ul>
 
-  		<section>
-	  		<h3>Total Winnings Per Player</h3>
-	  		<table class="winningsPerPlayer table table-striped table-bordered">
-	  			<thead>
-	  				<tr>
-	  					<th>Player</th>
-	  					<th>Winnings</th>
-	  				</tr>
-	  			</thead>
-	  			<tbody>
-	  			</tbody>
-	  		</table>
-  		</section>
+		<div class="tab-content">
+			<!-- Squares -->
+			<div class="tab-pane active" id="squares">
+				<table class="squares"></table>
+  			</div>
 
-        <section>
-            <h3>Total Profit Per Player</h3>
-            <table class="profitPerPlayer table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Profit</th>
-                        <th>Winnings</th>
-                        <th>Buy-in</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </section>
+			<!-- Games -->
+			<div class="tab-pane" id="games">
+				<table class="games table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Round</th>
+							<th>Score</th>
+							<th>Winning Player/Square (Amount)</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 
-  		<section>
-  			<h3>Games</h3>
-			<table class="games table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Round</th>
-                        <th>Score</th>
-                        <th>Winning Player (Amount)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-  		</section>
+			<!-- Winnings -->
+			<div class="tab-pane" id="winnings">
+				<table class="winningsPerPlayer table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Player</th>
+							<th>Winnings</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+
+			<!-- Profit -->
+			<div class="tab-pane" id="profit">
+				<table class="profitPerPlayer table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Player</th>
+							<th>Profit</th>
+							<th>Winnings</th>
+							<th>Buy-in</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+		</div>
   	</body>
 </html>
