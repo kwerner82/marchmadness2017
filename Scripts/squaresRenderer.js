@@ -1,6 +1,15 @@
 (function() {
     window.selectedUser = "";
 
+    function getPlayerName(player) {
+        return player.replace(/\s*\d*$/, "");
+    }
+
+    function getPlayerId(player) {
+        // Adding this to handle names with whitespace/non-CSS-compatible characters
+        return btoa(getPlayerName(player));
+    }
+
     function renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId) {
         var squares = $(".squares");
 
@@ -20,7 +29,8 @@
 
             for(var i = 0; i < 10; i++) {
                 var squareId = "square" + winningTeamNumbers[i] + number;
-                var playerId = playersBySquareId[squareId];
+                var player = playersBySquareId[squareId];
+                var playerId = getPlayerId(player);
 
                 var td = $("<td></td>");
                 td.attr("id", squareId);
@@ -32,7 +42,7 @@
                     td.addClass("highlight");
                 }
 
-                td.append("<div class='player'>" + playerId + "</div>");
+                td.append("<div class='player'>" + player + "</div>");
                 td.append("<div class='winnings'></div>");
 
                 row.append(td);
@@ -81,9 +91,14 @@
     window.renderWinnings = renderWinnings;
 
     function renderWinningsPerPlayer(playersBySquareId, winningsBySquareId) {
+        var playerNamesBySquareId = {};
         var winningsPerPlayer = {};
 
         $.each(playersBySquareId, function(squareId, player) {
+            playerNamesBySquareId[squareId] = getPlayerName(player);
+        });
+
+        $.each(playerNamesBySquareId, function(squareId, player) {
             winningsPerPlayer[player] = winningsPerPlayer[player] || 0;
             winningsPerPlayer[player] += winningsBySquareId[squareId];
         });
@@ -114,7 +129,7 @@
         var table = $(".winningsPerPlayer");
         $.each(tableEntries, function(index, entry) {
             var row = $("<tr></tr>");
-            row.attr("playerId", entry.player);
+            row.attr("playerId", getPlayerId(entry.player));
             row.addClass("highlight-on-hover");
 
             if (entry.player === window.selectedUser)
@@ -134,10 +149,15 @@
     window.renderWinningsPerPlayer = renderWinningsPerPlayer;
 
     function renderProfitPerPlayer(playersBySquareId, winningsBySquareId, costPerSquare) {
+        var playerNamesBySquareId = {};
         var winningsPerPlayer = {};
         var buyinPerPlayer = {};
 
         $.each(playersBySquareId, function(squareId, player) {
+            playerNamesBySquareId[squareId] = getPlayerName(player);
+        });
+
+        $.each(playerNamesBySquareId, function(squareId, player) {
             winningsPerPlayer[player] = winningsPerPlayer[player] || 0;
             winningsPerPlayer[player] += winningsBySquareId[squareId];
 
@@ -176,7 +196,7 @@
         var table = $(".profitPerPlayer");
         $.each(tableEntries, function(index, entry) {
             var row = $("<tr></tr>");
-            row.attr("playerId", entry.player);
+            row.attr("playerId", getPlayerId(entry.player));
             row.addClass("highlight-on-hover");
 
             if (entry.player === window.selectedUser)
@@ -234,7 +254,8 @@
                 losingNumber = game.score1 % 10;
             }
 
-            var playerId = playersBySquareId["square" + winningNumber + losingNumber];
+            var player = playersBySquareId["square" + winningNumber + losingNumber];
+            var playerId = getPlayerId(player);
             
             var row = $("<tr></tr>");
             if (game.round === 0)
@@ -255,7 +276,7 @@
 
             row.append("<td>" + game.round + "</td>");
             row.append(gameScoreColumn);
-            row.append("<td>" + playerId + " ($" + payoutsPerRound[game.round] + ")" + "</td>");
+            row.append("<td>" + player + " ($" + payoutsPerRound[game.round] + ")" + "</td>");
 
             table.find("tbody").append(row);
 
@@ -372,6 +393,14 @@
             $.each(losingTeamNumbers, function(losingIndex, losingNumber) {
                 playersBySquareId["square" + winningNumber + losingNumber] = $.trim(players[losingIndex][winningIndex]);
             });
+        });
+
+        var normalizedPlayersBySquareId = {};
+        $.each(playersBySquareId, function(squareId, player) {
+            // Strip whitespace and number from player
+            // For example, this maps "Ryan 1", "Ryan 2", "Ryan 3" all to "Ryan".
+            // This is useful for folks who want to identify multiple squares with distinct display names.
+            normalizedPlayersBySquareId[squareId] = player.replace(/\s*\d*$/, "");
         });
 
         renderSquares(winningTeamNumbers, losingTeamNumbers, playersBySquareId);
