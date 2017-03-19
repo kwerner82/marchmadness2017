@@ -234,7 +234,7 @@
             });
         });
 
-        $(".games tr").remove();
+        $(".games tbody tr").remove();
         
         var table = $(".games");
         $.each(games, function(index, game) {
@@ -414,9 +414,15 @@
                 renderGames(games, players, payoutsPerRound, winningTeamNumbers, losingTeamNumbers);
             });   
         };
+
+        // Render tabs
+        $(".nav a").click(function (evt) {
+            evt.preventDefault();
+            $(this).tab("show");
+        });
         
+        // Render data and set timer
         renderData();
-        
         setInterval(renderData, 30000);
     }
     window.initializeSquares = initializeSquares;
