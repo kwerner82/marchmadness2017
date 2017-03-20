@@ -16,14 +16,14 @@ $(document).ready(function() {
     var players = [
         ["KW  ", "AGE ", "JL  ", "KG  ", "MO  ", "EE  ", "AGU ", "JR  ", "WO  ", "JY  "],
         ["TD  ", "KW  ", "MA  ", "BM  ", "ZL  ", "BP  ", "JL  ", "OG  ", "SO  ", "WO  "],
-        ["KH  ", "KS  ", "KW  ", "MA  ", "SC  ", "AP  ", "BG  ", "NT  ", "MF  ", "BM  "],
+        ["KH  ", "KS  ", "KW  ", "MA  ", "SC  ", "AP  ", "BG  ", "NT  ", "MOF ", "BM  "],
         ["MO  ", "SC  ", "KH  ", "KW  ", "NU  ", "KG  ", "JL  ", "KS  ", "NK  ", "KG  "],
         ["BA  ", "BW  ", "LG  ", "JR  ", "OG  ", "NT  ", "LO  ", "NU  ", "CD  ", "JM  "],
-        ["AGU ", "BM  ", "SC  ", "MF  ", "BA  ", "KW  ", "ZL  ", "NK  ", "WA  ", "BP  "],
+        ["AGU ", "BM  ", "SC  ", "MEF ", "BA  ", "KW  ", "ZL  ", "NK  ", "WA  ", "BP  "],
         ["LG  ", "SO  ", "DP  ", "AGE ", "NK  ", "WO  ", "KG  ", "WA  ", "BA  ", "EP  "],
-        ["AP  ", "EP  ", "BP  ", "SC  ", "KH  ", "LG  ", "MF  ", "BW  ", "WO  ", "ZL  "],
+        ["AP  ", "EP  ", "BP  ", "SC  ", "KH  ", "LG  ", "MOF ", "BW  ", "WO  ", "ZL  "],
         ["CDF ", "JY  ", "MO  ", "EE  ", "BG  ", "JL  ", "EE  ", "TD  ", "AGE ", "MA  "],
-        ["NK  ", "ZL  ", "LO  ", "LG  ", "MF  ", "JM  ", "JL  ", "SO  ", "NK  ", "JR  "]
+        ["NK  ", "ZL  ", "LO  ", "LG  ", "MEF ", "JM  ", "JL  ", "SO  ", "NK  ", "JR  "]
     ];
 
     initializeSquares(winningTeamNumbers, losingTeamNumbers, players, costPerSquare, payoutsPerRound);
